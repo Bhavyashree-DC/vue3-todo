@@ -1,6 +1,6 @@
 <template>
-    <div class="header">
-      <h1>DashBoards</h1>
+    <div class="nav-header">
+      <h1>Menu</h1>
       <el-icon><Expand /></el-icon>
     </div>
       <el-row class="tac">
@@ -14,7 +14,7 @@
         <router-link to="/">
           <el-sub-menu index="1">
             <template #title>
-              <el-icon><Notebook /></el-icon>
+              <el-icon><List /></el-icon>
               <span>My TodoList</span>
             </template>
             <el-menu-item-group title="Personal"></el-menu-item-group>
@@ -35,36 +35,63 @@
               <span>Calendar</span>
             </el-menu-item>
           </router-link>
-  
-          <el-menu-item index="4">
-              <el-icon><DeleteFilled /></el-icon>
-              <span>Trash</span>
-            </el-menu-item>
-        </el-menu>
-      </el-col>
-      </el-row>
-    </template>
+
+          <router-link to="/progress">
+          <el-menu-item index="5">
+            <el-icon><Eleme /></el-icon>
+              <span>Progress</span>
+          </el-menu-item>
+          </router-link>
+          
+          <el-sub-menu index="4">
+              <template #title>
+                <span>Tags</span>
+              </template>
+              <el-menu-item-group>
+                  <div class="flex gap-5">
+                    <el-tag type="primary">Tag 1</el-tag>
+                    <el-tag type="warning">Tag 2</el-tag>
+                  </div>
+                  <!-- <el-button class="button-new-tag" size="small" @click="showInput"> + NewTag </el-button> -->
+              </el-menu-item-group>
+           </el-sub-menu>  
+           <router-link to="/login">
+                <el-menu-item index="6">
+                    <el-icon><UserFilled /></el-icon>
+                  <span>Login</span>
+                </el-menu-item>
+           </router-link>
+
+                <el-menu-item index="7">
+                    <el-icon><UserFilled /></el-icon>
+                  <span>Logout</span>
+                </el-menu-item>
+         </el-menu>
+    </el-col>
+   </el-row>
+</template>
     
     <script setup>
     import { ref } from 'vue'
     import {
-      Notebook,
+      List,
       CirclePlusFilled,
       Calendar,
-      DeleteFilled ,
-      Expand
+      Eleme ,
+      Expand,
+      UserFilled
     } from '@element-plus/icons-vue'
     
     
     </script>
     
     <style lang="scss">
-    .header{
+    .nav-header{
        display: flex;
        align-items: center;
-       justify-content: center;
+       justify-content: space-between;
        gap:10px;
-       margin: 40px 0px 0px;
+       margin: 40px 30px 0px;
   
         h1{
            font-size: 24px;
@@ -74,6 +101,7 @@
           font-size: 29px;
         }
     }
+    
     .el-menu-vertical-demo:not(.el-menu--collapse) {
       width: 300px;
       min-height: 600px;
@@ -81,19 +109,33 @@
   
       .el-menu-item,
       .el-sub-menu,
-      .el-sub-menu span{
+      .el-sub-menu span,
+      a{
        font-size: 24px;
        padding:10px;
        text-decoration: none;
        list-style: none;
+      }
+   
+
+        .el-button {
+          padding:20px;
+        }
+    
+      
+    .el-menu-item .el-icon{
+       font-size: 36px;
+       margin-right: 10px;
     }
-  
-    .el-icon{
-       font-size: 22px;
+    .el-menu-item-group{
+        font-size: 1px;
+        padding:10px;
+
     }
     .el-menu-item-group__title {
+      // margin-top: 10px;
         list-style: none;
-        font-size: 20px;
+        font-size: 22px;
         text-decoration: none;
       }  
     }

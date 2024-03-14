@@ -52,9 +52,6 @@
   
   <script setup>
   import TodoHeader from '../components/TodoHeader.vue';
-  import {
-  Check
-  } from '@element-plus/icons-vue'
   import { computed, onMounted, ref } from 'vue';
   import { useStore } from 'vuex';
   
@@ -66,25 +63,18 @@
   });
   
   const completedTodos = computed(() => {
-    return store.getters.getList.filter(todo => todo.completed);
+    return store.getters.completedTodos
   });
   
   const pendingTodos = computed(() => {
-    return store.getters.getList.filter(todo => !todo.completed);
+    return store.getters.pendingTodos
   });
 
   const totalTodos = computed(()=> {
-      return store.getters.getList.length;
+      return store.getters.totalTodos;
   });
 
-  const completedPercent = computed(()=>{
-       return totalTodos.value ? (completedTodos.value.length / totalTodos.value) * 100 : 0;
-  });
 
-  const pendingPercent = computed(() =>{
-     return totalTodos.value ? (pendingTodos.value.length / totalTodos.value) * 100 : 0;
-  })
-  
   onMounted(() => {
     store.dispatch('fetchList');
   });
@@ -100,10 +90,15 @@
     }
     .el-tabs{
         margin-right: 180px;
-       
     }
+    .task-progress{
+        width:700px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+   
     .list-table{
-        width:100%;
         display: flex;
         align-items: center;
         justify-content: center;

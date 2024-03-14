@@ -1,15 +1,17 @@
 <template>
     <div class="todo-container">
-        <div class="logo">
-            <el-icon><Notebook /></el-icon>
-         </div>
-        <div class="header">
-           <h1>TodoList</h1>
-        </div>
+       <div class="todo">
+          <div class="logo">
+              <el-icon><List /></el-icon>
+          </div>
+          <div class="header">
+            <h1>TodoList</h1>
+          </div>
+       </div>
         <div class="search-todo">
           <el-input
             v-model="input2"
-            style="width: 440px;height: 26px;"
+            style="width: 540px;height: 46px;"
             placeholder="Search here"
             :suffix-icon="Search"
           />
@@ -19,7 +21,7 @@
 
 <script setup>
  import {
-  Notebook,Search
+  List,Search
   } from '@element-plus/icons-vue'
 </script>
 
@@ -27,7 +29,7 @@
   .todo-container{
       display: flex;
       align-content:center;
-      justify-content: flex-start;
+      justify-content: space-between;
       gap:20px;
 
       width:100%;
@@ -39,30 +41,32 @@
       line-height: 40px;
       letter-spacing: 1.2px;
 
-      .logo{
-        .el-icon{
-             font-size: 60px;
-             color:white;
-        }
-      }
-      .search-todo{
-         margin-left: 280px;
-         padding:6px 0px;
-          .el-input{
-              height:390px;
+      .todo{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .logo{
+            .el-icon{
+                font-size: 60px;
+                color:white;
+            }
+          }
+          .header h1{
+            margin-top: 10px;
+            font-size: 32px;
+            font-weight: 600;
           }
       }
-      .el-input ,
-      .el-input--suffix{
-            height: 20px;
+      .search-todo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+          .el-input{
+            font-size:20px;
+           border-radius: 20px;
+           background-color:rgb(0,24,157);
+           color:white;
+          }
       }
-      .header h1{
-          margin-top: 10px;
-          font-size: 32px;
-          font-weight: 600;
-       }
-       .description h5{
-                font-size: 20px;
-            }
   }
 </style>

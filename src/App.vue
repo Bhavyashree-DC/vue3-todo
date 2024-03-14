@@ -1,10 +1,14 @@
 <template>
   <div class="layout">
      <el-container>
-        <el-aside width="300px"><NavBar/></el-aside>
+        <el-aside width="300px"><NavBar/>
+        </el-aside>
         <el-container>
            <el-header><TodoHeader/></el-header>
-           <el-main><TodoList/></el-main>
+           <el-main>
+            <router-view></router-view>
+              <!-- <TodoList/> -->
+          </el-main>
         </el-container>
       </el-container>
 </div>
@@ -13,7 +17,6 @@
 
 <script setup>
 import NavBar from './components/NavBar.vue'
-import TodoList from './views/TodoListView.vue'
 import TodoHeader from './components/TodoHeader.vue'
 
 </script>
